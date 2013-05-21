@@ -11,8 +11,11 @@
 		B2259335174B5CF500A3E880 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B2259333174B5CF500A3E880 /* InfoPlist.strings */; };
 		B2259337174B5CF500A3E880 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B2259336174B5CF500A3E880 /* main.m */; };
 		B225933B174B5CF500A3E880 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = B2259339174B5CF500A3E880 /* Credits.rtf */; };
-		B225933E174B5CF500A3E880 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B225933D174B5CF500A3E880 /* AppDelegate.m */; };
-		B2259341174B5CF500A3E880 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B225933F174B5CF500A3E880 /* MainMenu.xib */; };
+		B2259349174B5D4600A3E880 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B2259348174B5D4600A3E880 /* AppDelegate.m */; };
+		B225934C174B5D5300A3E880 /* Couch.m in Sources */ = {isa = PBXBuildFile; fileRef = B225934B174B5D5300A3E880 /* Couch.m */; };
+		B2259351174B5D6400A3E880 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B225934E174B5D6400A3E880 /* MainViewController.m */; };
+		B2259352174B5D6400A3E880 /* Session.m in Sources */ = {isa = PBXBuildFile; fileRef = B2259350174B5D6400A3E880 /* Session.m */; };
+		B2259354174B5DED00A3E880 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2259353174B5DED00A3E880 /* MainMenu.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,9 +29,15 @@
 		B2259336174B5CF500A3E880 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B2259338174B5CF500A3E880 /* BenApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BenApp-Prefix.pch"; sourceTree = "<group>"; };
 		B225933A174B5CF500A3E880 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		B225933C174B5CF500A3E880 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		B225933D174B5CF500A3E880 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		B2259340174B5CF500A3E880 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		B2259347174B5D4600A3E880 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		B2259348174B5D4600A3E880 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B225934A174B5D5300A3E880 /* Couch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Couch.h; sourceTree = "<group>"; };
+		B225934B174B5D5300A3E880 /* Couch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Couch.m; sourceTree = "<group>"; };
+		B225934D174B5D6400A3E880 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		B225934E174B5D6400A3E880 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		B225934F174B5D6400A3E880 /* Session.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Session.h; sourceTree = "<group>"; };
+		B2259350174B5D6400A3E880 /* Session.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Session.m; sourceTree = "<group>"; };
+		B2259353174B5DED00A3E880 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,9 +91,15 @@
 		B2259330174B5CF500A3E880 /* BenApp */ = {
 			isa = PBXGroup;
 			children = (
-				B225933C174B5CF500A3E880 /* AppDelegate.h */,
-				B225933D174B5CF500A3E880 /* AppDelegate.m */,
-				B225933F174B5CF500A3E880 /* MainMenu.xib */,
+				B225934D174B5D6400A3E880 /* MainViewController.h */,
+				B225934E174B5D6400A3E880 /* MainViewController.m */,
+				B2259353174B5DED00A3E880 /* MainMenu.xib */,
+				B225934F174B5D6400A3E880 /* Session.h */,
+				B2259350174B5D6400A3E880 /* Session.m */,
+				B225934A174B5D5300A3E880 /* Couch.h */,
+				B225934B174B5D5300A3E880 /* Couch.m */,
+				B2259347174B5D4600A3E880 /* AppDelegate.h */,
+				B2259348174B5D4600A3E880 /* AppDelegate.m */,
 				B2259331174B5CF500A3E880 /* Supporting Files */,
 			);
 			path = BenApp;
@@ -155,7 +170,7 @@
 			files = (
 				B2259335174B5CF500A3E880 /* InfoPlist.strings in Resources */,
 				B225933B174B5CF500A3E880 /* Credits.rtf in Resources */,
-				B2259341174B5CF500A3E880 /* MainMenu.xib in Resources */,
+				B2259354174B5DED00A3E880 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,7 +182,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2259337174B5CF500A3E880 /* main.m in Sources */,
-				B225933E174B5CF500A3E880 /* AppDelegate.m in Sources */,
+				B2259349174B5D4600A3E880 /* AppDelegate.m in Sources */,
+				B225934C174B5D5300A3E880 /* Couch.m in Sources */,
+				B2259351174B5D6400A3E880 /* MainViewController.m in Sources */,
+				B2259352174B5D6400A3E880 /* Session.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,14 +206,6 @@
 				B225933A174B5CF500A3E880 /* en */,
 			);
 			name = Credits.rtf;
-			sourceTree = "<group>";
-		};
-		B225933F174B5CF500A3E880 /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B2259340174B5CF500A3E880 /* en */,
-			);
-			name = MainMenu.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
