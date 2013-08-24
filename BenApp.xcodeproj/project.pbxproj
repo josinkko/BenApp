@@ -13,6 +13,9 @@
 		B225933B174B5CF500A3E880 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = B2259339174B5CF500A3E880 /* Credits.rtf */; };
 		B225933E174B5CF500A3E880 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B225933D174B5CF500A3E880 /* AppDelegate.m */; };
 		B2259341174B5CF500A3E880 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B225933F174B5CF500A3E880 /* MainMenu.xib */; };
+		B22593C9174B8AEE00A3E880 /* Couch.m in Sources */ = {isa = PBXBuildFile; fileRef = B22593C8174B8AEE00A3E880 /* Couch.m */; };
+		B22593CE174B8B0300A3E880 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B22593CB174B8B0300A3E880 /* MainViewController.m */; };
+		B22593CF174B8B0300A3E880 /* Session.m in Sources */ = {isa = PBXBuildFile; fileRef = B22593CD174B8B0300A3E880 /* Session.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +32,12 @@
 		B225933C174B5CF500A3E880 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B225933D174B5CF500A3E880 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		B2259340174B5CF500A3E880 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		B22593C7174B8AEE00A3E880 /* Couch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Couch.h; sourceTree = "<group>"; };
+		B22593C8174B8AEE00A3E880 /* Couch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Couch.m; sourceTree = "<group>"; };
+		B22593CA174B8B0300A3E880 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		B22593CB174B8B0300A3E880 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		B22593CC174B8B0300A3E880 /* Session.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Session.h; sourceTree = "<group>"; };
+		B22593CD174B8B0300A3E880 /* Session.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Session.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +94,12 @@
 				B225933C174B5CF500A3E880 /* AppDelegate.h */,
 				B225933D174B5CF500A3E880 /* AppDelegate.m */,
 				B225933F174B5CF500A3E880 /* MainMenu.xib */,
+				B22593CA174B8B0300A3E880 /* MainViewController.h */,
+				B22593CB174B8B0300A3E880 /* MainViewController.m */,
+				B22593CC174B8B0300A3E880 /* Session.h */,
+				B22593CD174B8B0300A3E880 /* Session.m */,
+				B22593C7174B8AEE00A3E880 /* Couch.h */,
+				B22593C8174B8AEE00A3E880 /* Couch.m */,
 				B2259331174B5CF500A3E880 /* Supporting Files */,
 			);
 			path = BenApp;
@@ -168,6 +183,9 @@
 			files = (
 				B2259337174B5CF500A3E880 /* main.m in Sources */,
 				B225933E174B5CF500A3E880 /* AppDelegate.m in Sources */,
+				B22593C9174B8AEE00A3E880 /* Couch.m in Sources */,
+				B22593CE174B8B0300A3E880 /* MainViewController.m in Sources */,
+				B22593CF174B8B0300A3E880 /* Session.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,6 +321,7 @@
 				B2259346174B5CF500A3E880 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
