@@ -27,9 +27,9 @@
 {
     self = [super init];
     if (self) {
+        
         sessions = [[NSMutableArray alloc] init];
         allTags = [[NSMutableArray alloc] init];
-        //[self updateLabel];
     }
     return self;
 }
@@ -60,6 +60,7 @@
     starttime = [NSDate timeIntervalSinceReferenceDate];
     [self updateElapsedTimeBetweenDates];
 }
+
 -(void)updateElapsedTimeBetweenDates
 {
     [self willChangeValueForKey:@"elapsedTimeBetweenDates"];
@@ -101,8 +102,6 @@
     // ---------- SESSION CODE ----------
     Couch *couch = [[Couch alloc] init];
     
-    //sessions = [self populateSessionsArray];
-    
     NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"M/d/yyyy/h/mm/ss/a"];
     
@@ -123,11 +122,8 @@
         
         NSString *timeString = [NSString stringWithFormat:@"%d h: %d min: %d sec", hours, minutes, seconds];
         currentSession.elapsedTime = timeString;
-        
-        [sessions insertObject:currentSession atIndex:0];
-        [tableView reloadData];
-        
-    } 
+    }
+    
     double timePassed = [[currentSession endTime] timeIntervalSinceDate:currentSession.startTime];
         
     int hours = timePassed / (60 * 60);
@@ -136,7 +132,7 @@
         
     NSString *timeString = [NSString stringWithFormat:@"%d h: %d min: %d sec", hours, minutes, seconds];
     currentSession.elapsedTime = timeString;
-        
+    
     [sessions insertObject:currentSession atIndex:0];
     [tableView reloadData];
     
@@ -178,10 +174,10 @@
     [self resetElapsedTime];
      
      if (myTimer == nil) {
-         NSLog(@"starting");
+         NSLog(@"starting timer");
          myTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateLabel) userInfo:nil repeats:YES];
      } else {
-         NSLog(@"stopping");
+         NSLog(@"stopping timer");
          [myTimer invalidate];
          myTimer = nil;
          Couch *couch = [[Couch alloc] init];
@@ -198,14 +194,14 @@
          
          NSString *timeString = [NSString stringWithFormat:@"%d h: %d min: %d sec", hours, minutes, seconds];
          currentSession.elapsedTime = timeString;
+         [sessions insertObject:currentSession atIndex:0];
+         [tableView reloadData];
          
          [couch updateSession:currentSession];
          
          [[self hr] setStringValue:@"0"];
          [[self min] setStringValue:@"0"];
          [[self sec] setStringValue:@"0"];
-         
-         //[couch updateCurrentSession];
          [currentAssignmentTextField setStringValue:@" "];
 
      }

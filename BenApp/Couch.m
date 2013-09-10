@@ -17,43 +17,32 @@
     NSDictionary *sessionAsDictionary = [session sessionToDictionary];
     NSData *postdata = [NSJSONSerialization dataWithJSONObject:sessionAsDictionary options:0 error:nil];
     
-    NSURL *url = [NSURL URLWithString:@"http://localhost:5984/benapp"];
+    NSURL *url = [NSURL URLWithString:@"http://johanna.iriscouch.com/benapp"];
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:postdata];
     [request setValue:@"application/json" forHTTPHeaderField:@"content-type"];
-    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     
-    [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *resp, NSData *data, NSError *error) {
-        
-        if (error) {
-            //do some offline code here
-            NSMutableArray *sessionsFromFile = [NSMutableArray arrayWithContentsOfFile:@"/Users/josinkko/Documents/benappsessions"];
-            // få tillbaka en plist och serialisera den till json sen
-            
-            NSMutableString *jsonString = [NSMutableString stringWithContentsOfFile:@"/Users/josinkko/Documents/hejsan.txt" encoding:NSUTF8StringEncoding error:0];
-            //NSMutableDictionary *stringAsJSON = []
-            
-            NSLog(@"You're offline. Session saved to file.");
-        } else {
-            NSLog(@"Session saved to DB.");
-        }
-    }];
-    
+    NSURLResponse *resp;
+    NSError *err;
+    [NSURLConnection sendSynchronousRequest:request returningResponse:&resp error:&err];
 }
 
 - (NSMutableDictionary *) getCurrentSession;
 {
-    NSURL *url = [NSURL URLWithString:@"http://localhost:5984/benapp/_design/benapp/_list/getvalues/currentsession"];
+    NSURL *url = [NSURL URLWithString:@"http://johanna.iriscouch.com/benapp/_design/benapp/_list/getvalues/currentsession"];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
     [request setValue:@"application/json" forHTTPHeaderField:@"content-type"];
     
     NSURLResponse *resp;
     NSError *err;
     
-    NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:
-                              &resp error:&err];
+    NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:&resp error:&err];
+
+    if (err) {
+        NSLog(@"ERROR in getting current session: %@", [err localizedDescription]);
+    }
 
     NSMutableDictionary *responseAsDictionary = [[NSJSONSerialization JSONObjectWithData:response options:0 error:nil] objectAtIndex:0];
     
@@ -63,7 +52,7 @@
 
 - (void) getPreviousSessionsWithCompletionHandler:(void(^)(NSArray *responseData)) callback
 {
-    NSURL *url = [NSURL URLWithString:@"http://localhost:5984/benapp/_design/benapp/_list/getvalues/previoussessions"];
+    NSURL *url = [NSURL URLWithString:@"http://johanna.iriscouch.com/benapp/_design/benapp/_list/getvalues/previoussessions"];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
     [request setValue:@"application/json" forHTTPHeaderField:@"content-type"];
     
@@ -91,7 +80,7 @@
     NSString *revNumber = [currentSession valueForKey:@"_rev"];
     
     NSMutableString *urlstring = [[NSMutableString alloc] init];
-    [urlstring appendString:@"http://127.0.0.1:5984/benapp/"];
+    [urlstring appendString:@"http://johanna.iriscouch.com/benapp/"];
     [urlstring appendString:ID];
     [urlstring appendString:@"?rev="];
     [urlstring appendString:revNumber];
@@ -124,51 +113,9 @@
     
     if (!err) {
         NSLog(@"Successfully updated current session in DB");
+    } else {
+        NSLog(@"%@", [err localizedDescription]);
     }
-    /*[couch getCurrentSessionWithCompletionHandler:^(NSArray *response) {
-        for (int i = 0; i < [response count]; i++) {
-            
-            NSString *ID = [[response objectAtIndex:i] valueForKeyPath:@"_id"];
-            NSString *revisionNumber = [[response objectAtIndex:i] valueForKeyPath:@"_rev"];
-            
-            NSMutableString *urlstring2 = [[NSMutableString alloc] init];
-            [urlstring2 appendString:@"http://127.0.0.1:5984/benapp/"];
-            [urlstring2 appendString:ID];
-            [urlstring2 appendString:@"?rev="];
-            [urlstring2 appendString:revisionNumber];
-            
-            NSURL *url = [NSURL URLWithString:urlstring2];
-            NSMutableURLRequest *request2 = [[NSMutableURLRequest alloc]initWithURL:url];
-            
-            BOOL isFalse = NO;
-            
-            NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
-            [dateFormatter setDateFormat:@"MM-dd hh-mm-ss"];
-            NSDate *endDate = [NSDate date];
-            NSString *endDateString = [dateFormatter stringFromDate:endDate];
-            
-            NSMutableDictionary *stringAsJson = [[NSMutableDictionary alloc] init];
-            stringAsJson[@"startTime"] = [[response objectAtIndex:i] valueForKeyPath:@"startTime"];
-            stringAsJson[@"endTime"] = endDateString;
-            stringAsJson[@"assignmentDescription"] = [[response objectAtIndex:i] valueForKeyPath:@"assignmentDescription"];
-            stringAsJson[@"elapsedTime"] = [[response objectAtIndex:i] valueForKeyPath:@"elapsedTime"];
-            stringAsJson[@"isCurrent"] = @(isFalse);
-            
-            NSData *responseAsJSON = [NSJSONSerialization dataWithJSONObject:stringAsJson options:NSJSONWritingPrettyPrinted error:nil];
-            
-            [request2 setHTTPMethod:@"PUT"];
-            [request2 setValue:@"application/json" forHTTPHeaderField:@"content-type"];
-            [request2 setHTTPBody:responseAsJSON];
-            
-            NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-            
-            [NSURLConnection sendAsynchronousRequest:request2 queue:queue completionHandler:^(NSURLResponse *resp, NSData *data, NSError *error) {
-
-            }];
-        }
-        
-
-    }];*/
 }
 
 - (void) updateSession: (Session *) session
@@ -180,7 +127,7 @@
     NSString *revNumber = [currentSession valueForKey:@"_rev"];
     
     NSMutableString *urlstring = [[NSMutableString alloc] init];
-    [urlstring appendString:@"http://127.0.0.1:5984/benapp/"];
+    [urlstring appendString:@"http://johanna.iriscouch.com/benapp/"];
     [urlstring appendString:ID];
     [urlstring appendString:@"?rev="];
     [urlstring appendString:revNumber];
@@ -220,16 +167,21 @@
 
 - (NSMutableArray *) getAllSessions;
 {
-    NSURL *url = [NSURL URLWithString:@"http://localhost:5984/benapp/_design/benapp/_list/getvalues/all"];
+    NSURL *url = [NSURL URLWithString:@"http://johanna.iriscouch.com/benapp/_design/benapp/_list/getvalues/all"];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
     
     NSURLResponse *resp = [[NSURLResponse alloc] init];
-    NSError *error = [[NSError alloc] init];
+    NSError *error = nil;
     
     NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:&resp error:&error];
+
     
-    id responseData = [NSJSONSerialization JSONObjectWithData:response options:0 error:nil];
+    id responseData = [NSJSONSerialization JSONObjectWithData:response options:0 error:&error];
     NSMutableArray *sessions = [[NSMutableArray alloc] init];
+    
+    if (error) {
+        NSLog(@"ERROR: %@", [error localizedDescription]);
+    }
 
     for (int i = 0; i < [responseData count]; i++) {
         [sessions addObject:[self jsonToSession:[responseData objectAtIndex:i]]];

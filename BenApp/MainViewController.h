@@ -8,7 +8,8 @@
 
 
 #import <Foundation/Foundation.h>
-#import "Session.h"
+
+@class Session;
 
 @interface MainViewController : NSViewController <NSTableViewDataSource>
 {
@@ -32,8 +33,6 @@
 - (void) updateLabel;
 - (void) updateElapsedTimeBetweenDates;
 - (void) resetElapsedTime;
-//- (IBAction)stopCurrentSession:(id)sender;
-
 
 - (IBAction)stopGo:(id)sender;
 
